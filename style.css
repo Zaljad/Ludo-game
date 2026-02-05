@@ -1,0 +1,59 @@
+body{
+  background-color: #21203F;
+
+}
+.container{
+
+  display: flex;
+  flex-direction: column;
+  justify-content:center ;
+  align-items: center;
+  min-height: 100vh;
+}
+.inputs{
+  background-color: #ffffff;
+  align-items: center;
+  width:200px;
+  height: 30px;
+  margin: 5px;
+  margin: 0;
+}
+#enter-btn{
+  width:100px;
+  height: 35px;
+  margin: 2px;
+  background-color: #F3AD38;
+  border-color: #dfa032;
+}
+.headers{
+  color:#F3AD38;
+  font-family:  "Playwrite NZ Basic", cursive;
+
+}
+.players-names{
+  margin: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-items:center ;
+  align-items: center;
+}
+.board_cells{
+  background-color: azure;
+  border:1px solid #ddd;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+  aspect-ratio: 1/1;
+}
+
+
+.game_board{
+  display: grid;
+  grid-template-columns: repeat(11, 1fr);
+  grid-template-rows: repeat(11, 1fr);
+  aspect-ratio: 1/1;
+  width: min(90vw, 500px);
+  gap: 2px;
+  background-color: transparent;
+}
