@@ -39,7 +39,7 @@ body{
 }
 .board_cells{
   background-color: azure;
-  border:1px solid #ddd;
+  /*border:1px solid #ddd;*/
   display: flex;
   justify-content: center;
   align-items: center;
@@ -53,7 +53,7 @@ body{
   grid-template-columns: repeat(12, 1fr);
   grid-template-rows: repeat(12, 1fr);
   aspect-ratio: 1/1;
-  width: min(90vw, 500px);
+  width: min(90vw, 700px);
   gap: 2px;
   background-color: transparent;
 }
@@ -64,4 +64,39 @@ body{
 
 .red-center{
   background-color: #fc4d64;
+}
+
+#dice{
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  place-items: center;
+  margin-top: 10%;
+  width: min(20vw, 80px);
+  aspect-ratio: 1/1;
+  background-color: #967adc;
+  border: 2px solid #b192ff;
+  border-radius: 10%;
+
+}
+
+/* .dice-face{
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  aspect-ratio: 1/1;
+  border: 1px solid #ffffff;
+  border-radius: 10px;
+  padding: 10px;
+  width: min(20vw, 80px) ;
+
+} */
+
+.dice-dot{
+  width: min(3vw, 10px);
+  background: #ffffff;
+  border-radius: 50%;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  aspect-ratio: 1/1;
 }
