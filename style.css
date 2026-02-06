@@ -50,10 +50,18 @@ body{
 
 .game_board{
   display: grid;
-  grid-template-columns: repeat(11, 1fr);
-  grid-template-rows: repeat(11, 1fr);
+  grid-template-columns: repeat(12, 1fr);
+  grid-template-rows: repeat(12, 1fr);
   aspect-ratio: 1/1;
   width: min(90vw, 500px);
   gap: 2px;
   background-color: transparent;
+}
+
+.yellow-center{
+  background-color: #F3AD38;
+}
+
+.red-center{
+  background-color: #fc4d64;
 }
