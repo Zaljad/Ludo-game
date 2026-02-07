@@ -164,7 +164,7 @@ rollDice=()=>{
     addDots(1,3)
     addDots(2,2)
     addDots(3,1)
-    addDots(3,2)
+    addDots(3,3)
   }
   else if (num === 6){
     dice.style.gridTemplate = 'repeat(2, 1fr) / repeat(3, 1fr)';
