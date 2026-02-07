@@ -50,7 +50,7 @@ for (let i = 1; i <= 44; i++) {
     col = i
   }
   //right col
-   else if (i <= 22) {
+  else if (i <= 22) {
     row = i - 11
     col = 12
   }
@@ -120,16 +120,61 @@ redCenter.style.gridRow='5/8'
 redCenter.style.gridColumn='7/9'
 board.appendChild(redCenter)
 
-//Dice rolling
-for( let i=0; i<6; i++){
-  const dot = document.createElement('div')
-  dot.classList.add('dice-dot')
-  dice.appendChild(dot)
+
+addDots=(row,col)=>{
+
+    const dot = document.createElement('div')
+    dot.classList.add('dice-dot')
+    dot.style.gridRow=row
+    dot.style.gridColumn=col
+    dice.appendChild(dot)
+
 }
 
-/*
-dice.addEventListener('click',()=>{
-  dice
-})
+rollDice=()=>{
+  dice.innerHTML="";
+  const num =Math.floor(Math.random()*6)+1
 
- */
+  if (num === 1){
+    dice.style.gridTemplate = '1fr / 1fr';
+    addDots(1,1)
+  }
+  else if (num === 2){
+    dice.style.gridTemplate = 'repeat(2, 1fr) / repeat(2, 1fr)';
+    addDots(1,1)
+    addDots(2,2)
+  }
+  else if (num === 3){
+    dice.style.gridTemplate = 'repeat(3, 1fr) / repeat(3, 1fr)';
+    addDots(1,1)
+    addDots(2,2)
+    addDots(3,3)
+  }
+  else if (num === 4){
+    dice.style.gridTemplate = 'repeat(2, 1fr) / repeat(2, 1fr)';
+    addDots(1,1)
+    addDots(1,2)
+    addDots(2,1)
+    addDots(2,2)
+
+  }
+  else if (num === 5){
+    dice.style.gridTemplate = 'repeat(3, 1fr) / repeat(3, 1fr)';
+    addDots(1,1)
+    addDots(1,3)
+    addDots(2,2)
+    addDots(3,1)
+    addDots(3,2)
+  }
+  else if (num === 6){
+    dice.style.gridTemplate = 'repeat(2, 1fr) / repeat(3, 1fr)';
+    addDots(1,1)
+    addDots(1,2)
+    addDots(1,3)
+    addDots(2,1)
+    addDots(2,2)
+    addDots(2,3)
+  }
+}
+
+dice.addEventListener('click',rollDice)

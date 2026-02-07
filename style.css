@@ -68,8 +68,6 @@ body{
 
 #dice{
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: repeat(2, 1fr);
   place-items: center;
   margin-top: 10%;
   width: min(20vw, 80px);
@@ -80,17 +78,6 @@ body{
 
 }
 
-/* .dice-face{
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: repeat(3, 1fr);
-  aspect-ratio: 1/1;
-  border: 1px solid #ffffff;
-  border-radius: 10px;
-  padding: 10px;
-  width: min(20vw, 80px) ;
-
-} */
 
 .dice-dot{
   width: min(3vw, 10px);
@@ -100,3 +87,6 @@ body{
   grid-template-rows: repeat(3, 1fr);
   aspect-ratio: 1/1;
 }
+
+
+
