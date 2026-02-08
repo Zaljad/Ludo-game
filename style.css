@@ -70,19 +70,11 @@ body{
   background-color: transparent;
 }
 
-.yellow-center{
-  background-color: #F3AD38;
-}
-
-.red-center{
-  background-color: #fc4d64;
-}
-
 #dice{
   display: grid;
   place-items: center;
   margin-top: 10%;
-  width: min(20vw, 80px);
+  width: min(15vw, 80px);
   aspect-ratio: 1/1;
   background-color: #967adc;
   border: 2px solid #b192ff;
@@ -109,10 +101,10 @@ body{
   justify-content: center;
 }
 .tokens{
-  width: min(5vw, 50px);
+  width: min(4vw, 50px);
   aspect-ratio: 1/1;
   border-radius: 50%;
-  box-shadow: 0 4px 6px rgb(0, 0, 0, 0.2);
+  box-shadow: 0 4px 6px rgb(0, 0, 0, 0.5);
   display: block;
 }
 .yellow-token{
