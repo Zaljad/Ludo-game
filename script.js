@@ -1,62 +1,42 @@
 const board = document.querySelector(".game_board")
 const currentPlayer =document.querySelector('#current-player')
 const enterBtn = document.querySelector('#enter-btn')
-const input1 = document.querySelector('#input1')
-const input2 = document.querySelector('#input2')
+const input1 = document.getElementById('input1')
+const input2 = document.getElementById('input2')
 const dice = document.querySelector('#dice')
 const redToken1 =document.querySelector('#red-token-1')
 const redToken2 =document.querySelector('#red-token-2')
 const yellowToken1 =document.querySelector('#yellow-token-1')
 const yellowToken2 =document.querySelector('#yellow-token-2')
 
+
 //enter button siting
 if(enterBtn){
   enterBtn.addEventListener('click',()=>{
-    window.location.href ='ludo_board.html'
+    localStorage.setItem('player1Name',input1.value|| 'player1')
+    localStorage.setItem('player2Name', input2.value || 'player2')
+  window.location.href ='ludo_board.html'
   })
 }
 
 //players changing system
+let player1 = localStorage.getItem('player1Name')||'player1';
+let player2 = localStorage.getItem('player2Name')||'player2';
+let crtPlayer = player1;
 
-let player1;
-let player2;
-
-
-if(input1){
-  input1.addEventListener('input',()=>{
-    player1= input1.value
-    updateTurnDisplay();
-  })
-}
-if(input2){
-  input2.addEventListener('input',()=>{
-    player2= input2.value
-    updateTurnDisplay();
-  })
-}
-
-let crtPlayer = null;
-updateTurnDisplay=()=>{
-    if(crtPlayer===player1){
-    crtPlayer=player2
-    updateTurnDisplay();}
-  else{
-    crtPlayer=player1
-    updateTurnDisplay();}
+if (crtPlayer){
   currentPlayer.textContent=`${crtPlayer} Turn's`
 }
 
 
 changePlayer=()=>{
-forEach(()=>{
-  if(crtPlayer===player1){
-    crtPlayer=player2
-    updateTurnDisplay();}
+    if(crtPlayer===player1){
+    crtPlayer=player2}
   else{
-    crtPlayer=player1
-    updateTurnDisplay();}
-})
+    crtPlayer=player1}
+  currentPlayer.textContent=`${crtPlayer} Turn's`
 }
+
 
 
  //board creation
@@ -226,6 +206,7 @@ const moveToken=(token , pathStep)=>{
   const targetCell =document.getElementById(targetId)
   targetCell.appendChild(token)
 
+
 }
 
 let redPos1 = -1;
@@ -260,7 +241,7 @@ redToken2.addEventListener('click',()=>{
 
     moveToken(redToken2,redPath[redPos2])
     num=0;
-
+    changePlayer()
   }
 })
 
@@ -278,7 +259,7 @@ yellowToken1.addEventListener('click',()=>{
 
     moveToken(yellowToken1,yellowPath[yellowPos1])
     num=0;
-
+    changePlayer()
   }
 })
 
@@ -296,8 +277,7 @@ yellowToken2.addEventListener('click',()=>{
 
     moveToken(yellowToken2,yellowPath[yellowPos2])
     num=0;
-
+    changePlayer()
   }
 })
-
 
