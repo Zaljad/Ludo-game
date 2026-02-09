@@ -11,6 +11,7 @@ const yellowToken2 =document.querySelector('#yellow-token-2')
 const yellowToken = document.querySelector('.yellow-token')
 const redToken = document.querySelector('.red-token')
 const tokens = document.querySelector('.tokens')
+const winnerWindow =document.querySelector('#winner-window')
 
 //enter button siting
 if(enterBtn){
@@ -160,7 +161,7 @@ const rollDice=()=>{
           num = 0
           diceRolled=false
           changePlayer()
-        },5000)
+        },2000)
       }
     }
     else if(crtPlayer === player2){
@@ -170,7 +171,7 @@ const rollDice=()=>{
           num =0
           diceRolled=false
           changePlayer()
-        },5000)
+        },2000)
       }
     }
   }
@@ -260,8 +261,17 @@ redToken1.addEventListener('click',()=>{
     if(redPos1+num < redPath.length){
     redPos1+= num;
   }
+  else if(redPos1+num >= redPath.length){
+    num = 0;
+    diceRolled=false
+    changePlayer();
+    return
+  }
 
     moveToken(redToken1,redPath[redPos1])
+    if (checkWinner()){
+      return
+    }
 
     if(killed || num === 6 || targetId==='cell-17' || targetId==='red-center' ){
       bonusTurn= true;
@@ -293,8 +303,17 @@ redToken2.addEventListener('click',()=>{
 
     if(redPos2+num < redPath.length){
     redPos2+= num;}
+    else if(redPos2+num >= redPath.length){
+    num = 0;
+    diceRolled=false
+    changePlayer();
+    return
+  }
 
     moveToken(redToken2,redPath[redPos2])
+    if (checkWinner()){
+      return
+    }
 
     if(killed || num === 6 || targetId==='cell-17' || targetId==='red-center' ){
       bonusTurn= true;
@@ -324,9 +343,20 @@ yellowToken1.addEventListener('click',()=>{
   if( ( num > 0 && yellowPos1 >= 0)){
 
     if(yellowPos1+num < yellowPath.length){
-    yellowPos1+= num;}
+      yellowPos1+= num;
+    }
+    else if(yellowPos1+num >= yellowPath.length){
+    num = 0;
+    diceRolled=false
+    changePlayer();
+    return
+    }
 
     moveToken(yellowToken1,yellowPath[yellowPos1])
+    if (checkWinner()){
+      return
+    }
+
     if(killed || num === 6 || targetId==='cell-40' || targetId==='yellow-center' ){
       bonusTurn= true;
       diceRolled = false
@@ -356,8 +386,17 @@ yellowToken2.addEventListener('click',()=>{
 
     if(yellowPos2+num < yellowPath.length){
     yellowPos2+= num;}
+    else if(yellowPos2+num >= yellowPath.length){
+    num = 0;
+    diceRolled=false
+    changePlayer();
+    return
+  }
 
     moveToken(yellowToken2,yellowPath[yellowPos2])
+    if (checkWinner()){
+      return
+    }
     if(killed || num === 6 || targetId==='cell-40' || targetId==='yellow-center' ){
       bonusTurn= true;
       diceRolled = false
@@ -407,5 +446,28 @@ const eliminate=(targetCell, crtTokenClass)=>{
       }
     }
   })
+}
+
+
+const checkWinner =()=>{
+
+  const redWin = redPos1 === redPath.length-1 &&redPos2 === redPath.length-1
+
+  const yellowWin = yellowPos1=== yellowPath.length-1 && yellowPos2=== yellowPath.length-1
+
+  if (redWin){
+    winnerWindow.textContent=`${player1} wins 🎉`
+    winnerWindow.style.display ='block'
+
+    dice.removeEventListener('click',rollDice)
+    return true;
+  }
+    if (yellowWin){
+    winnerWindow.textContent=`${player2} wins 🎉`
+    winnerWindow.style.display ='block'
+    dice.removeEventListener('click',rollDice)
+    return true;
+  }
+  return false
 }
 

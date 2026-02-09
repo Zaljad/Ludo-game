@@ -21,7 +21,7 @@ body{
   min-height: 100vh;
   gap: 20px;
   margin-bottom: 20px;
-  overflow: hidden;
+
 }
 .inputs{
   background-color: #ffffff;
@@ -121,4 +121,25 @@ body{
   justify-content: center;
   gap: 20px;
   width: 100%;
+}
+
+#winner-window{
+  background-color: #ffffff;
+  transform: translate(-50%,-50%);
+  position: fixed;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-weight: bold;
+  top: 50%;
+  left: 50%;
+  font-size: 50px;
+  font-family:  "Playwrite NZ Basic", cursive;
+  display: none;
+  z-index: 100;
+  min-height: 100px;
+  width: min(90vw, 700px);
+  border-radius: 2%;
+
 }
