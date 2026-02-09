@@ -142,9 +142,38 @@ addDots=(row,col)=>{
 }
 
 let num ;
-rollDice=()=>{
+let diceRolled = false;
+const rollDice=()=>{
+  if (diceRolled === true){
+    return
+  }
   dice.innerHTML="";
   num = Math.floor(Math.random()*6)+1
+  diceRolled = true;
+
+  // is num =6 ??  is inside the board??
+  if(num !== 6){
+    if(crtPlayer === player1){
+      if (!redToken1.parentElement.classList.contains('board_cells')&& !redToken2.parentElement.classList.contains('board_cells')){
+
+        setTimeout(()=>{
+          num = 0
+          diceRolled=false
+          changePlayer()
+        },5000)
+      }
+    }
+    else if(crtPlayer === player2){
+            if (!yellowToken1.parentElement.classList.contains('board_cells')&& !yellowToken2.parentElement.classList.contains('board_cells')){
+
+        setTimeout(()=>{
+          num =0
+          diceRolled=false
+          changePlayer()
+        },5000)
+      }
+    }
+  }
 
   if (num === 1){
     dice.style.gridTemplate = '1fr / 1fr';
@@ -186,6 +215,7 @@ rollDice=()=>{
     addDots(2,2)
     addDots(2,3)
   }
+
 }
 
 //
@@ -223,23 +253,28 @@ redToken1.addEventListener('click',()=>{
     redPos1=0;
     moveToken(redToken1,redPath[redPos1])
     num=0;
+    diceRolled=false;
   }
   if( ( num > 0 && redPos1 >= 0)){
 
     if(redPos1+num < redPath.length){
     redPos1+= num;
   }
+
     moveToken(redToken1,redPath[redPos1])
 
     if(killed || num === 6 || targetId==='cell-17' || targetId==='red-center' ){
       bonusTurn= true;
-
+      diceRolled = false
+      killed=false
     }
 
     else{
+    diceRolled =false
     changePlayer()
     }
     num =0;
+    diceRolled =false
   }
 })
 
@@ -252,6 +287,7 @@ redToken2.addEventListener('click',()=>{
     redPos2=0;
     moveToken(redToken2,redPath[redPos2])
     num=0;
+    diceRolled=false;
   }
   if( ( num > 0 && redPos2 >= 0)){
 
@@ -262,13 +298,15 @@ redToken2.addEventListener('click',()=>{
 
     if(killed || num === 6 || targetId==='cell-17' || targetId==='red-center' ){
       bonusTurn= true;
-
+      diceRolled = false
+      killed=false
     }
 
     else{
     changePlayer()
     }
     num =0;
+    diceRolled =false
   }
 })
 
@@ -281,6 +319,7 @@ yellowToken1.addEventListener('click',()=>{
     yellowPos1=0;
     moveToken(yellowToken1,yellowPath[yellowPos1])
     num=0;
+    diceRolled=false;
   }
   if( ( num > 0 && yellowPos1 >= 0)){
 
@@ -290,13 +329,15 @@ yellowToken1.addEventListener('click',()=>{
     moveToken(yellowToken1,yellowPath[yellowPos1])
     if(killed || num === 6 || targetId==='cell-40' || targetId==='yellow-center' ){
       bonusTurn= true;
-
+      diceRolled = false
+      killed=false
     }
 
     else{
     changePlayer()
     }
     num =0;
+    diceRolled =false
   }
 })
 
@@ -309,6 +350,7 @@ yellowToken2.addEventListener('click',()=>{
     yellowPos2=0;
     moveToken(yellowToken2,yellowPath[yellowPos2])
     num=0;
+    diceRolled=false;
   }
   if( ( num > 0 && yellowPos2 >= 0)){
 
@@ -318,18 +360,20 @@ yellowToken2.addEventListener('click',()=>{
     moveToken(yellowToken2,yellowPath[yellowPos2])
     if(killed || num === 6 || targetId==='cell-40' || targetId==='yellow-center' ){
       bonusTurn= true;
-
+      diceRolled = false
+      killed=false
     }
 
     else{
     changePlayer()
     }
     num =0;
+    diceRolled =false
   }
 })
 
 //eliminate process
-let killed = false;
+let killed=false;
 const safeCells =['cell-1','cell-12', 'cell-23','cell-34','cell-40','cell-17'];
 const eliminate=(targetCell, crtTokenClass)=>{
   if(safeCells.includes(targetCell.id)){
