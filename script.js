@@ -8,7 +8,9 @@ const redToken1 =document.querySelector('#red-token-1')
 const redToken2 =document.querySelector('#red-token-2')
 const yellowToken1 =document.querySelector('#yellow-token-1')
 const yellowToken2 =document.querySelector('#yellow-token-2')
-
+const yellowToken = document.querySelector('.yellow-token')
+const redToken = document.querySelector('.red-token')
+const tokens = document.querySelector('.tokens')
 
 //enter button siting
 if(enterBtn){
@@ -30,11 +32,13 @@ if (crtPlayer){
 
 
 changePlayer=()=>{
-    if(crtPlayer===player1){
-    crtPlayer=player2}
+  if(crtPlayer===player1){
+    crtPlayer=player2
+  }
   else{
-    crtPlayer=player1}
-  currentPlayer.textContent=`${crtPlayer} Turn's`
+    crtPlayer=player1
+  }
+    currentPlayer.textContent=`${crtPlayer} Turn's`
 }
 
 
@@ -204,9 +208,8 @@ const moveToken=(token , pathStep)=>{
   }
 
   const targetCell =document.getElementById(targetId)
-  targetCell.appendChild(token)
-
-
+  eliminate(targetCell,token.classList[1])
+  targetCell.appendChild(token);
 }
 
 let redPos1 = -1;
@@ -280,4 +283,39 @@ yellowToken2.addEventListener('click',()=>{
     changePlayer()
   }
 })
+
+//eliminate process
+/* let killed = false; */
+const safeCells =['cell-1','cell-12', 'cell-23','cell-34','cell-40','cell-17'];
+const eliminate=(targetCell, crtTokenClass)=>{
+  if(safeCells.includes(targetCell.id)){
+    return
+  }
+  const existingTokens = targetCell.querySelectorAll('.tokens')
+
+  existingTokens.forEach((token)=>{
+    if(!token.classList.contains(crtTokenClass)){
+      if(token.id === 'red-token-1'){
+        redPos1 = -1;
+      }
+      else if(token.id === 'red-token-2'){
+        redPos2 = -1;
+      }
+      else if (token.id === 'yellow-token-1'){
+        yellowPos1 = -1;
+      }
+      else if(token.id === 'yellow-token-2'){
+        yellowPos2 = -1
+      }
+
+    //back to the base
+    if(token.classList.contains('red-token')){
+      document.querySelector('.red-base').appendChild(token)
+      }
+      else{
+        document.querySelector('.yellow-base').appendChild(token)
+      }
+    }
+  })
+}
 
