@@ -214,6 +214,9 @@ const moveToken=(token , pathStep)=>{
 
 let redPos1 = -1;
 redToken1.addEventListener('click',()=>{
+  if (crtPlayer !== player1){
+    return
+  }
   if (num === 6 && redPos1 === -1){
     redPos1=0;
     moveToken(redToken1,redPath[redPos1])
@@ -232,6 +235,9 @@ redToken1.addEventListener('click',()=>{
 
 let redPos2 = -1;
 redToken2.addEventListener('click',()=>{
+  if (crtPlayer !== player1){
+    return
+  }
   if (num === 6 && redPos2 === -1){
     redPos2=0;
     moveToken(redToken2,redPath[redPos2])
@@ -250,6 +256,9 @@ redToken2.addEventListener('click',()=>{
 
 let yellowPos1 = -1;
 yellowToken1.addEventListener('click',()=>{
+  if (crtPlayer !== player2){
+    return
+  }
   if (num === 6 && yellowPos1 === -1){
     yellowPos1=0;
     moveToken(yellowToken1,yellowPath[yellowPos1])
@@ -268,6 +277,9 @@ yellowToken1.addEventListener('click',()=>{
 
 let yellowPos2 = -1;
 yellowToken2.addEventListener('click',()=>{
+  if (crtPlayer !== player2){
+    return
+  }
   if (num === 6 && yellowPos2 === -1){
     yellowPos2=0;
     moveToken(yellowToken2,yellowPath[yellowPos2])
