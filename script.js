@@ -210,9 +210,11 @@ const moveToken=(token , pathStep)=>{
   const targetCell =document.getElementById(targetId)
   eliminate(targetCell,token.classList[1])
   targetCell.appendChild(token);
+
 }
 
 let redPos1 = -1;
+let bonusTurn = false;
 redToken1.addEventListener('click',()=>{
   if (crtPlayer !== player1){
     return
@@ -225,11 +227,19 @@ redToken1.addEventListener('click',()=>{
   if( ( num > 0 && redPos1 >= 0)){
 
     if(redPos1+num < redPath.length){
-    redPos1+= num;}
-
+    redPos1+= num;
+  }
     moveToken(redToken1,redPath[redPos1])
-    num=0;
+
+    if(killed || num === 6 || targetId==='cell-17' || targetId==='red-center' ){
+      bonusTurn= true;
+
+    }
+
+    else{
     changePlayer()
+    }
+    num =0;
   }
 })
 
@@ -249,8 +259,16 @@ redToken2.addEventListener('click',()=>{
     redPos2+= num;}
 
     moveToken(redToken2,redPath[redPos2])
-    num=0;
+
+    if(killed || num === 6 || targetId==='cell-17' || targetId==='red-center' ){
+      bonusTurn= true;
+
+    }
+
+    else{
     changePlayer()
+    }
+    num =0;
   }
 })
 
@@ -270,8 +288,15 @@ yellowToken1.addEventListener('click',()=>{
     yellowPos1+= num;}
 
     moveToken(yellowToken1,yellowPath[yellowPos1])
-    num=0;
+    if(killed || num === 6 || targetId==='cell-40' || targetId==='yellow-center' ){
+      bonusTurn= true;
+
+    }
+
+    else{
     changePlayer()
+    }
+    num =0;
   }
 })
 
@@ -291,13 +316,20 @@ yellowToken2.addEventListener('click',()=>{
     yellowPos2+= num;}
 
     moveToken(yellowToken2,yellowPath[yellowPos2])
-    num=0;
+    if(killed || num === 6 || targetId==='cell-40' || targetId==='yellow-center' ){
+      bonusTurn= true;
+
+    }
+
+    else{
     changePlayer()
+    }
+    num =0;
   }
 })
 
 //eliminate process
-/* let killed = false; */
+let killed = false;
 const safeCells =['cell-1','cell-12', 'cell-23','cell-34','cell-40','cell-17'];
 const eliminate=(targetCell, crtTokenClass)=>{
   if(safeCells.includes(targetCell.id)){
@@ -322,10 +354,12 @@ const eliminate=(targetCell, crtTokenClass)=>{
 
     //back to the base
     if(token.classList.contains('red-token')){
-      document.querySelector('.red-base').appendChild(token)
+        document.querySelector('.red-base').appendChild(token)
+        killed=true;
       }
       else{
         document.querySelector('.yellow-base').appendChild(token)
+        killed=true;
       }
     }
   })
