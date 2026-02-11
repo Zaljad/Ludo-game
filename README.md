@@ -2,8 +2,7 @@
 ## By: Zainab Aljad
 ### Date: 5th-Feb-2026
 
-#### [Website](miniLudo.surge.sh
-) | [GitHub](https://github.com/Zaljad) | [LinkedIn](linkedin.com/in/zainab-aljad-004016375)
+#### [Website](miniLudo.surge.sh) | [GitHub](https://github.com/Zaljad) | [LinkedIn](linkedin.com/in/zainab-aljad-004016375)
 ***
 
 ### ***Description***

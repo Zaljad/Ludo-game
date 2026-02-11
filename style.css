@@ -67,6 +67,7 @@ body{
   font-weight: bold;
   aspect-ratio: 1/1;
   gap: 3px;
+  border-radius: 30%;
 }
 
 
@@ -79,6 +80,7 @@ body{
   gap: 2px;
   background-color: transparent;
   position: relative;
+
 }
 
 #dice{
@@ -142,6 +144,7 @@ body{
   position: static important!;
   position: relative;
   padding: 2px;
+  border-radius: 5%;
 }
 
 

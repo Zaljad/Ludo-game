@@ -15,13 +15,20 @@ const winnerWindow =document.querySelector('#winner-window')
 const exit = document.querySelector('.exit')
 const diceSound =document.getElementById('dice-sound')
 const moveSound =document.getElementById('move-sound')
+const clickSound =document.getElementById('click-sound')
 
 //enter button siting
 if(enterBtn){
   enterBtn.addEventListener('click',()=>{
+  clickSound.currentTime =0;
+  clickSound.play();
     localStorage.setItem('player1Name',input1.value|| 'player1')
     localStorage.setItem('player2Name', input2.value || 'player2')
-  window.location.href ='ludo_board.html'
+
+
+  setTimeout(()=>{
+    window.location.href ='ludo_board.html'
+  }, 1000)
   })
 }
 
@@ -507,6 +514,9 @@ const checkWinner =()=>{
 }
 
 exit.addEventListener('click',()=>{
+  clickSound.currentTime =0;
+  clickSound.play();
+  
   const confirmExit = confirm('Are you sure you want to exit the game?')
 
   if(confirmExit){
