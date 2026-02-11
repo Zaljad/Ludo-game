@@ -60,7 +60,6 @@ body{
 }
 .board_cells{
   background-color: azure;
-  /*border:1px solid #ddd;*/
   display: flex;
   justify-content: center;
   align-items: center;
@@ -119,7 +118,7 @@ body{
   border-radius: 50%;
   box-shadow: 0 4px 6px rgb(0, 0, 0, 0.5);
   display: block;
-  position:relative; /*الخلايا تصير فوق بعض و يبينون كأنهم  وحدة*/
+  position:relative;
   margin: 2px;
   transition: all 0.2 ease;
   z-index:1;

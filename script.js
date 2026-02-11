@@ -59,7 +59,6 @@ const changePlayer=()=>{
     board.classList.add('red-turn');
   }
     currentPlayer.textContent=`${crtPlayer} Turn's`
-
 }
 
 
@@ -177,7 +176,7 @@ const rollDice=()=>{
   dice.innerHTML="";
   setTimeout(()=>{
     dice.classList.remove('rolling')
-   },250)
+  },250)
   num = Math.floor(Math.random()*6)+1
   diceRolled = true;
 
@@ -280,9 +279,10 @@ const moveToken=(token , pathStep)=>{
   eliminate(targetCell,token.classList[1])
   targetCell.appendChild(token);
 
-
 }
 
+
+//red tokens selection and moving conditions
 let redPos1 = -1;
 let bonusTurn = false;
 redToken1.addEventListener('click',()=>{
@@ -327,6 +327,7 @@ redToken1.addEventListener('click',()=>{
   }
 })
 
+
 let redPos2 = -1;
 redToken2.addEventListener('click',()=>{
   if (crtPlayer !== player1){
@@ -368,6 +369,7 @@ redToken2.addEventListener('click',()=>{
   }
 })
 
+//yellow tokens selection and moving conditions
 let yellowPos1 = -1;
 yellowToken1.addEventListener('click',()=>{
   if (crtPlayer !== player2){
@@ -379,8 +381,8 @@ yellowToken1.addEventListener('click',()=>{
     num=0;
     diceRolled=false;
   }
-  if( ( num > 0 && yellowPos1 >= 0)){
 
+  if( ( num > 0 && yellowPos1 >= 0)){
     if(yellowPos1+num < yellowPath.length){
       yellowPos1+= num;
     }
@@ -408,7 +410,9 @@ yellowToken1.addEventListener('click',()=>{
     num =0;
     diceRolled =false
   }
+
 })
+
 
 let yellowPos2 = -1;
 yellowToken2.addEventListener('click',()=>{
@@ -491,10 +495,8 @@ const eliminate=(targetCell, crtTokenClass)=>{
   })
 }
 
-
+//check winner process
 const checkWinner =()=>{
-
-
   const redWin = redPos1 === redPath.length-1 &&redPos2 === redPath.length-1
 
   const yellowWin = yellowPos1=== yellowPath.length-1 && yellowPos2=== yellowPath.length-1
@@ -519,6 +521,8 @@ const checkWinner =()=>{
   return false
 }
 
+
+//exit icon siting
 exit.addEventListener('click',()=>{
   clickSound.currentTime =0;
   clickSound.play();
