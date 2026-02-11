@@ -16,6 +16,7 @@ const exit = document.querySelector('.exit')
 const diceSound =document.getElementById('dice-sound')
 const moveSound =document.getElementById('move-sound')
 const clickSound =document.getElementById('click-sound')
+const winningSound =document.getElementById('winning-sound')
 
 //enter button siting
 if(enterBtn){
@@ -493,11 +494,14 @@ const eliminate=(targetCell, crtTokenClass)=>{
 
 const checkWinner =()=>{
 
+
   const redWin = redPos1 === redPath.length-1 &&redPos2 === redPath.length-1
 
   const yellowWin = yellowPos1=== yellowPath.length-1 && yellowPos2=== yellowPath.length-1
 
   if (redWin){
+    winningSound.currentTime =0;
+    winningSound.play();
     winnerWindow.textContent=`${player1} wins 🎉`
     winnerWindow.style.display ='block'
 
@@ -505,6 +509,8 @@ const checkWinner =()=>{
     return true;
   }
     if (yellowWin){
+    winningSound.currentTime =0;
+    winningSound.play();
     winnerWindow.textContent=`${player2} wins 🎉`
     winnerWindow.style.display ='block'
     dice.removeEventListener('click',rollDice)
@@ -516,7 +522,7 @@ const checkWinner =()=>{
 exit.addEventListener('click',()=>{
   clickSound.currentTime =0;
   clickSound.play();
-  
+
   const confirmExit = confirm('Are you sure you want to exit the game?')
 
   if(confirmExit){
