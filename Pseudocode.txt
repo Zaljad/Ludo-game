@@ -5,30 +5,34 @@ The Welcoming Statement
 1.	The Welcoming Statement
 Player Setup
 2.	Players enter their names (two input spaces)
-3.	Enter button to start the game
+3.	An Enter button to start the game
+
 
 HTML Doc2 + JS
 Game Interface
 1.	The game board is shone
 2.	The player’s turn is shone above the board
 3.	An exit icon to exit the game is shone
-4.	Each player has two pointers
+4.	Each player has two tokens.
+
 Game Start & Turns
 5.	The user clicks on the dice to start the game
-6.	To git the pointer on the boarder to start play the player needs to roll the dice and git 6 in the dice
-7.	If the dice didn’t show 6 the player can’t get his pointer on the game board and the play turn will be switched to the other player
-8.	Every single pointer needs a 6 to get onto the board
-9.	If a player gets 6 in the dice, he will have a chance to re roll the dice and play with total sum of his dice rolls
-10.	If a player gets 6 three times in the sequentially then he will not be able to play the turn and the turn will be switched to the other player
-11.	The number that shows in the dice will represent the number of grids that the pointer will move inside the game board
-12.	If the dice show 6 the player can re roll the dice again to play otherwise the turn will be changed to the other player
-13.	The players can’t step inside the other player’s separate path (that grids will be on the color of the player pointer)
-14.	If the grids that remind less than the number that shone in the dice the player will not be able to play this turn and the turn will be switched to the other player
+6.	To get a token onto the board to start playing, the player must roll a 6.
+7.	If the dice didn’t roll 6 the player can’t get his token on the game board and the play turn will be switched to the other player
+8.	Each token requires a 6 to enter the board.
+9.	If a player roll a 6 , he will have a chance to re roll the dice and play with total sum of his dice rolls
+10.	The number that shows in the dice will represent the number of cells that the tokens will move inside the game board
+11.	If the dice show 6 the player can re roll the dice again to play otherwise the turn will be changed to the other player
+12.	The players can’t step inside the other player’s separate path (that cells will be on the color of the player tokens)
+13.	If the cells that remind less than the number that shone in the dice the player will not be able to play this turn and the turn will be switched to the other player
+
 Player Interaction Rules
-15.	If a player stands in a grid and the other player comes to the same grid the first player pointer will be back out of the game board
-16.	There is a safe grid that even if both players stand on it no pointer will out of the game board
+14.	If a player stands in a cell and the other player comes to the same cell the first player token will be back out of the game board
+15.	There is a safe cells that even if both players stand on it no token will out of the game board
+
 Board Paths & Zones
-17.	There is a separate path for each player after completing the course around the board
-18.	Players have different start zones and end zones
+16.	There is a separate path for each player after completing the course around the board
+17.	Players have different start zones and end zones
+
 Winning Condition
-19.	The player that enters all his pointers to his pointers finish zone will be the winner
+18.	The player that enters all his tokens to his tokens center zone (finish zone) will be the winner

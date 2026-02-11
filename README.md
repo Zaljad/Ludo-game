@@ -2,7 +2,7 @@
 ## By: Zainab Aljad
 ### Date: 5th-Feb-2026
 
-#### [Website](miniLudo.surge.sh) | [GitHub](https://github.com/Zaljad) | [LinkedIn](linkedin.com/in/zainab-aljad-004016375)
+#### [Website](https://miniLudo.surge.sh) | [GitHub](https://github.com/Zaljad) | [LinkedIn](https://www.linkedin.com/in/zainabaljad/)
 ***
 
 ### ***Description***
@@ -17,7 +17,7 @@
 
 ### ***Getting Started***
 
-##### The project was deployed and can be viewed [here](URL).
+##### The project was deployed and can be viewed [here](https://miniLudo.surge.sh).
 ***
 ### ***Screenshots***
 
