@@ -12,6 +12,9 @@ const yellowToken = document.querySelector('.yellow-token')
 const redToken = document.querySelector('.red-token')
 const tokens = document.querySelector('.tokens')
 const winnerWindow =document.querySelector('#winner-window')
+const exit = document.querySelector('.exit')
+const diceSound =document.getElementById('dice-sound')
+const moveSound =document.getElementById('move-sound')
 
 //enter button siting
 if(enterBtn){
@@ -28,6 +31,7 @@ let player2 = localStorage.getItem('player2Name')||'player2';
 let crtPlayer = player1;
 
 if (crtPlayer){
+  currentPlayer.style.color ='#fc4d64'
   currentPlayer.textContent=`${crtPlayer} Turn's`
 }
 
@@ -35,11 +39,14 @@ if (crtPlayer){
 changePlayer=()=>{
   if(crtPlayer===player1){
     crtPlayer=player2
+    currentPlayer.style.color ='#F3AD38'
   }
   else{
     crtPlayer=player1
+    currentPlayer.style.color ='#fc4d64'
   }
     currentPlayer.textContent=`${crtPlayer} Turn's`
+
 }
 
 
@@ -75,7 +82,7 @@ for (let i = 1; i <= 44; i++) {
   cell.style.gridRow = row
   cell.style.gridColumn = col
 
-  cell.innerText = i
+  cell.innerText = ''
 
   if (i===1 || i ===12 || i===23|| i===34) {
     cell.style.backgroundColor = "#008fec"
@@ -98,7 +105,7 @@ for (let i = 2; i <= 4; i++) {
   safeCell.style.gridColumn = i
 
   safeCell.style.backgroundColor = "#f3ae387c"
-  safeCell.innerText = i-1
+  safeCell.innerText = ''
 
   board.appendChild(safeCell)
 }
@@ -112,7 +119,7 @@ for (let i = 9; i <= 11; i++) {
   safeCell.style.gridColumn = i
 
   safeCell.style.backgroundColor = "#fc4d647c"
-  safeCell.innerText = i-8
+  safeCell.innerText = ''
 
   board.appendChild(safeCell)
 }
@@ -145,36 +152,51 @@ addDots=(row,col)=>{
 let num ;
 let diceRolled = false;
 const rollDice=()=>{
+
   if (diceRolled === true){
     return
   }
+
+  diceSound.currentTime =0;
+  diceSound.play();
+
+  dice.classList.add('rolling')
   dice.innerHTML="";
+  setTimeout(()=>{
+    dice.classList.remove('rolling')
+   },250)
   num = Math.floor(Math.random()*6)+1
   diceRolled = true;
 
   // is num =6 ??  is inside the board??
   if(num !== 6){
     if(crtPlayer === player1){
-      if (!redToken1.parentElement.classList.contains('board_cells')&& !redToken2.parentElement.classList.contains('board_cells')){
-
+      let redCheckT1 = (redPos1 ===-1) || (redPos1+num >= redPath.length);
+      let redCheckT2 = (redPos2 ===-1) || (redPos2+num >= redPath.length);
+      if (redCheckT1 && redCheckT2){
         setTimeout(()=>{
           num = 0
           diceRolled=false
           changePlayer()
-        },2000)
+        },1000)
       }
     }
+
     else if(crtPlayer === player2){
-            if (!yellowToken1.parentElement.classList.contains('board_cells')&& !yellowToken2.parentElement.classList.contains('board_cells')){
+      let yellowCheckT1 = (yellowPos1 ===-1) || (yellowPos1+num >= yellowPath.length);
+      let yellowCheckT2 = (yellowPos2 ===-1) || (yellowPos2+num >= yellowPath.length);
+      if (yellowCheckT1 && yellowCheckT2){
 
         setTimeout(()=>{
           num =0
           diceRolled=false
           changePlayer()
-        },2000)
+        },1000)
+
       }
     }
   }
+
 
   if (num === 1){
     dice.style.gridTemplate = '1fr / 1fr';
@@ -237,6 +259,9 @@ const moveToken=(token , pathStep)=>{
     console.log(pathStep)
     targetId = pathStep;
   }
+
+  moveSound.currentTime=0;
+  moveSound.play()
 
   const targetCell =document.getElementById(targetId)
   eliminate(targetCell,token.classList[1])
@@ -420,6 +445,10 @@ const eliminate=(targetCell, crtTokenClass)=>{
   }
   const existingTokens = targetCell.querySelectorAll('.tokens')
 
+  if (existingTokens.length >=2){
+    return
+  }
+
   existingTokens.forEach((token)=>{
     if(!token.classList.contains(crtTokenClass)){
       if(token.id === 'red-token-1'){
@@ -470,4 +499,13 @@ const checkWinner =()=>{
   }
   return false
 }
+
+exit.addEventListener('click',()=>{
+  const confirmExit = confirm('Are you sure you want to exit the game?')
+
+  if(confirmExit){
+    window.location.href='index.html'
+  }
+})
+
 
