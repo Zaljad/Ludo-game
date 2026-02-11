@@ -36,14 +36,19 @@ if (crtPlayer){
 }
 
 
-changePlayer=()=>{
+const changePlayer=()=>{
   if(crtPlayer===player1){
     crtPlayer=player2
     currentPlayer.style.color ='#F3AD38'
+    board.classList.remove('red-turn');
+    board.classList.add('yellow-turn')
+
   }
   else{
     crtPlayer=player1
     currentPlayer.style.color ='#fc4d64'
+    board.classList.remove('yellow-turn')
+    board.classList.add('red-turn');
   }
     currentPlayer.textContent=`${crtPlayer} Turn's`
 
@@ -139,7 +144,7 @@ redCenter.style.gridColumn='7/9'
 board.appendChild(redCenter)
 
 
-addDots=(row,col)=>{
+const addDots=(row,col)=>{
 
     const dot = document.createElement('div')
     dot.classList.add('dice-dot')
@@ -247,7 +252,7 @@ const rollingDice = dice.addEventListener('click',rollDice)
 //players paths
 const redPath=[17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,'red-safe-cell-3','red-safe-cell-2','red-safe-cell-1','red-center']
 const yellowPath=[40,41,42,43,44,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,'yellow-safe-cell-1','yellow-safe-cell-2','yellow-safe-cell-3','yellow-center']
-console.log(redPath.length)
+
 
 // tokens moving process
 let targetId;
@@ -266,6 +271,7 @@ const moveToken=(token , pathStep)=>{
   const targetCell =document.getElementById(targetId)
   eliminate(targetCell,token.classList[1])
   targetCell.appendChild(token);
+
 
 }
 
@@ -335,7 +341,7 @@ redToken2.addEventListener('click',()=>{
     return
   }
 
-    moveToken(redToken2,redPath[redPos2])
+  moveToken(redToken2,redPath[redPos2])
     if (checkWinner()){
       return
     }

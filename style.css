@@ -66,6 +66,7 @@ body{
   align-items: center;
   font-weight: bold;
   aspect-ratio: 1/1;
+  gap: 3px;
 }
 
 
@@ -118,6 +119,8 @@ body{
   display: block;
   position:relative; /*الخلايا تصير فوق بعض و يبينون كأنهم  وحدة*/
   margin: 2px;
+  transition: all 0.2 ease;
+  z-index:1;
 
 }
 .board_cells .tokens{
@@ -212,3 +215,8 @@ body{
 cursor:pointer;}
 
 
+.red-turn .red-token{z-index:10}
+.red-turn .yellow-token{z-index: 1}
+
+.yellow-turn .yellow-token{z-index:10}
+.yellow-turn .red-token{z-index: 1}
