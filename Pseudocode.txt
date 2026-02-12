@@ -33,6 +33,8 @@ Player Interaction Rules
 Board Paths & Zones
 16.	There is a separate path for each player after completing the course around the board
 17.	Players have different start zones and end zones
+18. If the player finished the round and will git to his separate path like re stand in the first cell he will git a another chance to roll the dice
+19. If the player token arrived to the center cell he will git another chance to roll the dice 
 
 Winning Condition
-18.	The player that enters all his tokens to his tokens center zone (finish zone) will be the winner
+20.	The player that enters all his tokens to his tokens center zone (finish zone) will be the winner
